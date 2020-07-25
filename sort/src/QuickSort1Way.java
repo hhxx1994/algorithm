@@ -14,7 +14,7 @@ public class QuickSort1Way {
     sort(arr, p + 1, r);
   }
 
-  // arr[l ... r)  partition  arr[l + 1 ... p) <  pivot   arr[p+1 .... r) > pivote
+  // arr[l ... r)  partition  arr[l + 1 ... p) <  pivot   arr[p+1 .... r) > pivot
   private static int partition(int[] arr, int l, int r) {
     int pivot = arr[l];
     int k = l;
