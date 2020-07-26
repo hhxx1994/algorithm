@@ -18,7 +18,7 @@ public class QuickSort1Way {
   private static int partition(int[] arr, int l, int r) {
     int pivot = arr[l];
     int k = l;
-    for (int i = l; i < r; i++) {
+    for (int i = l + 1; i < r; i++) {
       if (arr[i] < pivot) {
         k++;
         swap(arr, k, i);
@@ -42,7 +42,7 @@ public class QuickSort1Way {
   }
 
   public static void main(String[] args) {
-    int[] arr = {3, 6, 1, 7, 3, 2, 5, 8, 0, 3, 4, 8};
+    int[] arr = {6, 3};
     sort(arr);
     for (int i : arr) {
       System.out.print(i);
