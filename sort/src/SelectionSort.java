@@ -7,12 +7,11 @@ public class SelectionSort {
     if (arr == null || arr.length == 0) {
       return;
     }
-    int length = arr.length;
     int minIndex;
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < arr.length; i++) {
       minIndex = i;
-      for (int j = i; j < length; j++) {
-        if (arr[j] < arr[i]) {
+      for (int j = i; j < arr.length; j++) {
+        if (arr[j] < arr[minIndex]) {
           minIndex = j;
         }
       }
