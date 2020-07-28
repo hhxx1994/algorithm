@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * @author huanghaoxing
  */
@@ -20,12 +22,24 @@ public class InsertionSort {
   }
 
   public static void main(String[] args) {
-    int[] arr = {2, 3, 1, 5, 7, 3, 7, 8};
-    sort(arr);
-    for (int i : arr) {
-      System.out.print(i);
-      System.out.print(",");
+    int length = 300000;
+    int[] arr = new int[length];
+    for (int i = 0; i < length; i++) {
+      arr[i] = new Random().nextInt(length);
     }
+    long start = System.currentTimeMillis();
+    InsertionSort.sort(arr);
+    long end = System.currentTimeMillis();
+    System.out.println(end - start);
+
+    for (int i = 0; i < length; i++) {
+      arr[i] = new Random().nextInt(length);
+    }
+
+    start = System.currentTimeMillis();
+    InsertionSort3.sort(arr);
+    end = System.currentTimeMillis();
+    System.out.println(end - start);
   }
 
 }
