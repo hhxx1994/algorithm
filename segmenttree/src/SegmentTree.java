@@ -62,6 +62,28 @@ public class SegmentTree {
     }
   }
 
+
+  public void set(int index, int e) {
+
+  }
+
+  private void set(int treeIndex, int l, int r, int index, int e) {
+    if (l == r) {
+      tree[treeIndex] = e;
+      return;
+    }
+
+    int mid = l + (r - l) / 2;
+    int leftChild = leftChild(treeIndex);
+    int rightChild = rightChild(treeIndex);
+    if (mid < index) {
+      set(rightChild, mid + 1, r, index, e);
+    } else {
+      set(leftChild, l, mid, index, e);
+    }
+    tree[treeIndex] = tree[rightChild] + tree[leftChild];
+  }
+
   public static void main(String[] args) {
     SegmentTree segmentTree = new SegmentTree(new int[]{0, 1, 2, 3, 4, 5});
     System.out.println(Arrays.toString(segmentTree.tree));
