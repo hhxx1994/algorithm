@@ -1,4 +1,4 @@
-import java.util.Random;
+package one;
 
 /**
  * @author huanghaoxing 二路快排
