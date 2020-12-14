@@ -17,28 +17,9 @@ public class LoopQueue {
         return length;
     }
 
-    public void add(int data) {
+    public void enqueue(int data) {
         if ((tail + 1) % array.length == head) {
-            // 扩容
-            int[] newArray = new int[array.length << 1];
-            if (tail > head) {
-                for (int i = head, j = 0; i < tail; i++, j++) {
-                    newArray[j] = array[i];
-                }
-                head = 0;
-                tail = length;
-            } else {
-                int j = 0;
-                for (int i = head; i < array.length; i++, j++) {
-                    newArray[j] = array[i];
-                }
-                for (int index = 0; index < tail; index++, j++) {
-                    newArray[j] = array[index];
-                }
-                head = 0;
-                tail = length;
-            }
-            array = newArray;
+            array = resize();
         }
 
         array[tail] = data;
@@ -46,7 +27,19 @@ public class LoopQueue {
         length++;
     }
 
-    public Integer remove() {
+
+    private int[] resize() {
+        // 扩容
+        int[] newArray = new int[array.length << 1];
+        for (int i = 0; i < length; i++) {
+            newArray[i] = array[(head + i) % array.length];
+        }
+        head = 0;
+        tail = length;
+        return newArray;
+    }
+
+    public Integer dequeue() {
         if (tail == head) {
             // empty
             return null;
@@ -62,15 +55,15 @@ public class LoopQueue {
 
     public static void main(String[] args) {
         LoopQueue queue = new LoopQueue(5);
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
-        queue.remove();
-        queue.remove();
-        queue.add(5);
-        queue.add(6);
-        queue.add(7);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(5);
+        queue.enqueue(6);
+        queue.enqueue(7);
     }
 
 
