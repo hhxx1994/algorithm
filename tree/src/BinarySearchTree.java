@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * @author huanghaoxing
  */
@@ -97,6 +102,31 @@ public class BinarySearchTree<E extends Comparable<E>> {
         node.left = removeMin(node.left);
         return node;
     }
+
+
+    public List<E> preTravel() {
+        if (root == null) {
+            return null;
+        }
+        List<E> ret = new ArrayList<>();
+        LinkedList<Node<E>> stack = new LinkedList<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node<E> node = stack.pop();
+            ret.add(node.data);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+        return ret;
+
+    }
+
+
 
 
 }
