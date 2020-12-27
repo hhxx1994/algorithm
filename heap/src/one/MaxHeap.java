@@ -1,12 +1,14 @@
+package one;
+
 import java.util.ArrayList;
 
 /**
  * @author huanghaoxing
  */
-public class MapHeap<E extends Comparable> {
+public class MaxHeap<E extends Comparable> {
   ArrayList<E> array;
 
-  public MapHeap(int capacity) {
+  public MaxHeap(int capacity) {
     array = new ArrayList<>(capacity);
   }
 
@@ -49,6 +51,7 @@ public class MapHeap<E extends Comparable> {
   }
 
   private void siftUp(int index) {
+    // 上浮的条件
     while (parent(index) >= 0 && array.get(parent(index)).compareTo(array.get(index)) < 0) {
       swap(parent(index), index);
       index = parent(index);
@@ -62,7 +65,7 @@ public class MapHeap<E extends Comparable> {
   }
 
   public static void main(String[] args) {
-    MapHeap mapHeap = new MapHeap(10);
+    MaxHeap mapHeap = new MaxHeap(10);
     for (int i = 0; i < 10; i++)
       mapHeap.add(i);
 
