@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * @author huanghaoxing
@@ -126,7 +125,39 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     }
 
+    private class Command {
+        private String inst;
+        private Node<E> node;
 
+        public Command(String inst, Node<E> node) {
+            this.inst = inst;
+            this.node = node;
+        }
+    }
+
+    public List<E> inTravel() {
+        if (root == null) {
+            return null;
+        }
+        List<E> ret = new ArrayList<>();
+        LinkedList<Command> commands = new LinkedList<>();
+        commands.add(new Command("next", root));
+        while (!commands.isEmpty()) {
+            Command command = commands.pop();
+            if (command.inst.equals("do")) {
+                ret.add(command.node.data);
+            } else {
+                commands.push(new Command("do", command.node));
+                if (command.node.right != null) {
+                    commands.push(new Command("next", command.node.right));
+                }
+                if (command.node.left != null) {
+                    commands.push(new Command("next", command.node.left));
+                }
+            }
+        }
+        return ret;
+    }
 
 
 }
