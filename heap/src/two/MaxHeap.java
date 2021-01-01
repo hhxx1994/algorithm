@@ -10,6 +10,29 @@ public class MaxHeap {
 
     List<Integer> arr = new ArrayList<>();
 
+    public MaxHeap() {
+    }
+
+
+    public MaxHeap(List<Integer> arr) {
+        this.arr = arr;
+        int lastIndex = arr.size() - 1;
+        heapify(lastIndex);
+    }
+
+    private void heapify(int index) {
+        int parentIndex = parentIndex(index);
+        while (parentIndex > 0) {
+            siftUp(parentIndex);
+            parentIndex--;
+        }
+    }
+
+
+    public static void main(String[] args) {
+
+    }
+
     public void add(int data) {
         arr.add(data);
         int index = arr.size() - 1;
