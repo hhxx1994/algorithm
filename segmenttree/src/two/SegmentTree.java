@@ -61,6 +61,7 @@ public class SegmentTree {
         // base case , 叶子节点
         if (l == r) {
             tree[treeIndex] = data;
+            return;
         }
         int mid = l + (r - l) / 2;
         if (index <= mid) {
@@ -69,7 +70,6 @@ public class SegmentTree {
             update(index, data, mid + 1, r, right(treeIndex));
         }
         tree[treeIndex] = tree[left(treeIndex)] + tree[right(treeIndex)];
-
     }
 
 
