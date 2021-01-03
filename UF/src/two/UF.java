@@ -32,6 +32,7 @@ public class UF {
 
     private int find(int p) {
         while (parent[p] != p) {
+            parent[p] = parent[parent[p]];
             p = parent[p];
         }
         return p;
