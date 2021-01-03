@@ -20,6 +20,11 @@ public class UF {
         int pRoot = find(p);
         int qRoot = find(q);
 
+        // 已经是一个集合
+        if (pRoot == qRoot) {
+            return;
+        }
+
         if (rank[pRoot] < rank[qRoot]) {
             parent[pRoot] = qRoot;
         } else if (rank[qRoot] < rank[pRoot]) {
