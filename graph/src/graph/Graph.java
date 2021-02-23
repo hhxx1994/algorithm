@@ -1,3 +1,5 @@
+package graph;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -6,7 +8,7 @@ import java.util.TreeSet;
 
 /**
  * @author huanghaoxing
- * 无向图
+ * 无向无权图
  */
 public class Graph {
     private int E;
@@ -38,6 +40,10 @@ public class Graph {
 
     public int degree(int v) {
         return adj(v).size();
+    }
+
+    public boolean hasEdge(int v, int w) {
+        return adj(v).contains(w);
     }
 
 

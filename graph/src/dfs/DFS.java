@@ -1,4 +1,7 @@
-import java.io.File;
+package dfs;
+
+import graph.Graph;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +20,13 @@ public class DFS {
         visited = new boolean[G.V()];
         pre = new ArrayList<>();
         post = new ArrayList<>();
-        // 联通图
-        dfs(0);
+//        // 联通图
+//        dfs(0);
+        for (int i = 0; i < G.V(); i++) {
+            if (!visited[i]) {
+                dfs(i);
+            }
+        }
     }
 
     private void dfs(int v) {
@@ -35,9 +43,14 @@ public class DFS {
     }
 
     public static void main(String[] args) {
-        Graph graph = new Graph("graph/src/g.txt");
+        Graph graph = new Graph("graph/src/dfs/g.txt");
         DFS dfs = new DFS(graph);
         for (Integer v : dfs.pre) {
+            System.out.print(v);
+            System.out.print(",");
+        }
+        System.out.println();
+        for (Integer v : dfs.post) {
             System.out.print(v);
             System.out.print(",");
         }
