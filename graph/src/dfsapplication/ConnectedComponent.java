@@ -47,6 +47,10 @@ public class ConnectedComponent {
         return component;
     }
 
+    public boolean isConnected(int v, int w) {
+        return visited[v] == visited[w];
+    }
+
     public static void main(String[] args) {
         Graph graph = new Graph("graph/src/dfsapplication/g.txt");
         ConnectedComponent component = new ConnectedComponent(graph);

@@ -11,8 +11,18 @@ import java.util.TreeSet;
  * 无向无权图
  */
 public class Graph {
+    /**
+     * 变
+     */
     private int E;
+    /**
+     * 顶点
+     */
     private int V;
+
+    /**
+     * 邻接顶点
+     */
     private TreeSet<Integer>[] adj;
 
     public Graph(String path) {
