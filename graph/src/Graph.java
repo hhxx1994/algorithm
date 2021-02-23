@@ -13,6 +13,11 @@ public class Graph {
     private int V;
     private TreeSet<Integer>[] adj;
 
+    public Graph(String path) {
+        buildGraph(path);
+    }
+
+
     public int E() {
         return E;
     }
@@ -21,9 +26,20 @@ public class Graph {
         return V;
     }
 
+    /**
+     * 邻接顶点
+     *
+     * @param v
+     * @return
+     */
     public Set<Integer> adj(int v) {
         return adj[v];
     }
+
+    public int degree(int v) {
+        return adj(v).size();
+    }
+
 
     public void buildGraph(String path) {
         File file = new File(path);
@@ -35,13 +51,12 @@ public class Graph {
             for (int i = 0; i < V; i++) {
                 adj[i] = new TreeSet<>();
             }
-            while (scanner.hasNext()) {
+            for (int i = 0; i < E; i++) {
                 int v = scanner.nextInt();
                 int w = scanner.nextInt();
                 adj[w].add(v);
                 adj[v].add(w);
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

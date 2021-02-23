@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,12 @@ public class DFS {
     }
 
     public static void main(String[] args) {
+        Graph graph = new Graph("graph/src/g.txt");
+        DFS dfs = new DFS(graph);
+        for (Integer v : dfs.pre) {
+            System.out.print(v);
+            System.out.print(",");
+        }
 
     }
 
