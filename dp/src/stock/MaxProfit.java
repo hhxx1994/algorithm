@@ -1,3 +1,5 @@
+package stock;
+
 /**
  * @author huanghaoxing
  */
