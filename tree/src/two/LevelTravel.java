@@ -10,18 +10,18 @@ import java.util.Queue;
  */
 public class LevelTravel {
 
-    public List<List<Integer>> levelOrder(Node root) {
+    public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return null;
         }
         List<List<Integer>> ret = new ArrayList<>();
-        Queue<Node> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
             List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
-                Node node = queue.remove();
+                TreeNode node = queue.remove();
                 list.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);

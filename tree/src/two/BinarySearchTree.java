@@ -5,9 +5,9 @@ package two;
  */
 public class BinarySearchTree {
 
-    public Node add(Node node, int val) {
+    public TreeNode add(TreeNode node, int val) {
         if (node == null) {
-            return new Node(val);
+            return new TreeNode(val);
         }
 
         if (val < node.val) {
@@ -20,7 +20,7 @@ public class BinarySearchTree {
         return node;
     }
 
-    public Node remove(Node node, int val) {
+    public TreeNode remove(TreeNode node, int val) {
 
         if (node == null) {
             return null;
@@ -28,15 +28,15 @@ public class BinarySearchTree {
         // 本节点
         if (node.val == val) {
             if (node.left == null) {
-                Node right = node.right;
+                TreeNode right = node.right;
                 node.right = null;
                 return right;
             } else if (node.right == null) {
-                Node left = node.left;
+                TreeNode left = node.left;
                 node.left = null;
                 return left;
             } else {
-                Node minNode = findMin(node.right);
+                TreeNode minNode = findMin(node.right);
                 minNode.right = removeMin(node.right);
                 minNode.left = node.left;
             }
@@ -51,11 +51,11 @@ public class BinarySearchTree {
         return node;
     }
 
-    private Node removeMin(Node node) {
+    private TreeNode removeMin(TreeNode node) {
 
         // 本节点
         if (node.left == null) {
-            Node right = node.right;
+            TreeNode right = node.right;
             node.right = null;
             return right;
         }
@@ -64,7 +64,7 @@ public class BinarySearchTree {
         return node;
     }
 
-    private Node findMin(Node node) {
+    private TreeNode findMin(TreeNode node) {
         if (node == null) {
             return null;
         }

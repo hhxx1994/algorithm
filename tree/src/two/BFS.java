@@ -9,15 +9,15 @@ import java.util.Queue;
 public class BFS {
 
 
-    public BFS(Node root) {
+    public BFS(TreeNode root) {
         if (root == null) {
             return;
         }
-        Queue<Node> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            Node node = queue.remove();
+            TreeNode node = queue.remove();
             if (node.left != null) {
                 queue.add(node.left);
             }

@@ -5,7 +5,7 @@ package two;
  */
 public class DFS {
 
-    public void dfs(Node node) {
+    public void dfs(TreeNode node) {
         if (node == null) {
             return;
         }
