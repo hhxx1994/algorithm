@@ -15,15 +15,14 @@ public class search33 {
             int mid = l + (r - l) / 2;
             if (nums[0] < nums[mid]) {
                 l = mid + 1;
-            } else if (nums[mid] < nums[0]) {
-                r = mid - 1;
             } else {
-                l = mid + 1;
+                r = mid - 1;
             }
         }
 
 
         if (nums[0] <= target) {
+            r = l - 1;
             l = 0;
         } else {
             r = nums.length - 1;
@@ -41,8 +40,4 @@ public class search33 {
         return -1;
     }
 
-    public static void main(String[] args) {
-        int[] ints = {1, 3};
-        new search33().search(ints, 0);
-    }
 }
