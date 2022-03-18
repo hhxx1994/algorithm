@@ -39,7 +39,6 @@ public class TopoSort {
     private boolean dfs(int v) {
         visited[v] = true;
         onPath[v] = true;
-        order.add(v);
         for (Integer w : adj[v]) {
             if (!visited[w]) {
                 if (dfs(w)) {
@@ -49,7 +48,7 @@ public class TopoSort {
                 return true;
             }
         }
-
+        order.add(v);
         onPath[v] = false;
         return false;
     }
