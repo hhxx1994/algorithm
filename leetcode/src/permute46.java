@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -6,28 +7,32 @@ import java.util.List;
  */
 public class permute46 {
 
-    List<List<Integer>> ret = new ArrayList<>();
+    LinkedList<Integer> path = new LinkedList<>();
+    boolean[] visited;
+    List<List<Integer>> ret = new LinkedList<>();
 
     public List<List<Integer>> permute(int[] nums) {
-
-        backtrack(nums, new ArrayList<>());
+        visited = new boolean[nums.length];
+        backtrack(nums);
         return ret;
-
     }
 
-    public void backtrack(int[] nums, List<Integer> path) {
+    public void backtrack(int[] nums) {
+
         if (path.size() == nums.length) {
-            ret.add(new ArrayList<>(path));
+            ret.add(new LinkedList<>(path));
             return;
         }
 
-        for (int n : nums) {
-            if (path.contains(n)) {
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i]) {
                 continue;
             }
-            path.add(n);
-            backtrack(nums, path);
-            path.remove(path.size() - 1);
+            visited[i] = true;
+            path.addLast(nums[i]);
+            backtrack(nums);
+            visited[i] = false;
+            path.removeLast();
         }
     }
 }
