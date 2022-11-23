@@ -52,4 +52,9 @@ public class QuickSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{5,2,3,1};
+        new QuickSort().sort(nums);
+    }
 }
